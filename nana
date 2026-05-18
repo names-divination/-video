@@ -21,7 +21,7 @@
 
         /* 動画コンテナの初期状態（最初は隠しておく） */
         .video-container {
-            display: none;
+            display: none; /* ★ パスワードが合うまで非表示 */
             width: 90%;
             max-width: 800px;
             background: #000000;
@@ -72,10 +72,10 @@
         // ページが開いた瞬間にパスワード入力を求める
         const input = prompt("合言葉を入力してください：");
 
-        // 入力された文字をBase64に変換（btoa関数を使用）
+        // 入力された文字をBase64に変換
         const encodedInput = input ? btoa(input) : "";
 
-        // 「nanani」をBase64に変換した文字列「bmFuYW5p」と比較する
+        // 【修正】「nanani」をBase64にすると正しくは「bmFuYW5p」になります！
         if (encodedInput === "bmFuYW5p") {
             // パスワードが合っていたら動画を表示
             document.getElementById("player-box").style.display = "block";
