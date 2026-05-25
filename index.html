@@ -65,9 +65,24 @@
     </div>
 
     <script>
-        // パソコンのブラウザ用に動画を自動準備
         const vid = document.getElementById("my-video");
         vid.load();
+
+        // ★ 再生が始まったら自動で全画面にする機能を追加
+        vid.addEventListener('play', () => {
+            if (vid.requestFullscreen) {
+                vid.requestFullscreen();
+            } else if (vid.webkitRequestFullscreen) { 
+                // iPhoneやMacのSafari向けの処理
+                vid.webkitRequestFullscreen();
+            } else if (vid.mozRequestFullScreen) {
+                // Firefox向けの処理
+                vid.mozRequestFullScreen();
+            } else if (vid.msRequestFullscreen) {
+                // 古いIE向けの処理
+                vid.msRequestFullscreen();
+            }
+        });
     </script>
 
 </body>
